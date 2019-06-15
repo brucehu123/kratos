@@ -12,6 +12,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/davecgh/go-spew/spew"
 	"github.com/fatih/color"
 	"github.com/urfave/cli"
 )
@@ -113,6 +114,7 @@ func runTool(name, dir, cmd string, args []string) (err error) {
 		Stderr: os.Stderr,
 		Env:    os.Environ(),
 	}
+	spew.Dump(name, dir, cmd, args)
 	if filepath.Base(cmd) == cmd {
 		var lp string
 		if lp, err = exec.LookPath(cmd); err == nil {
